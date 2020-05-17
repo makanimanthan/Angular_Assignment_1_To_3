@@ -1,0 +1,44 @@
+<H1>Welcome to Login Page (Design with Template Driven Forms)</H1>
+
+<form #form="ngForm">
+    <table>
+        <tr>
+            <td>
+                <label>User Name</label>
+            </td>
+            <td>
+                <input #userName="ngModel" type="text" name="userName" class="form-control" id="userName"
+                [(ngModel)]="user.userName" required>
+                <div [hidden]="userName.valid || userName.untouched" class="error">
+                    Name is required.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Password</label>
+            </td>
+            <td>
+                <input #password="ngModel" type="password" name="password" class="form-control" id="password"
+                [(ngModel)]="user.password"  required>
+                <div [hidden]="password.valid || password.untouched" class="error">
+                    Password is required.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>User Type</label>
+            </td>
+            <td>
+                <td-usertype [userTypes] = "userTypes" [user] = "user" (userTypeChanged) = "displayValue($event)"></td-usertype>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit" [disabled]="form.invalid">Click</button>
+            </td>
+        </tr>
+    </table>
+</form>

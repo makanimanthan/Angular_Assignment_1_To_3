@@ -1,0 +1,7 @@
+<div [formGroup]="form">
+    <select dropdown id="userType" formControlName="userType" name="userType"
+        (change)="onUserTypeChange($event.target)">
+        <option *ngFor="let item of userTypes" [value]="item.id">{{item.id ? (item.name | extraText) : item.name}}</option>
+    </select>
+</div>
+<div class="note">On mouseover, dropdown color will be changed to yellow using directive.</div>

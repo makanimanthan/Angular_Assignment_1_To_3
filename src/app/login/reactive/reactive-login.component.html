@@ -1,0 +1,41 @@
+<H1>Welcome to Login Page (Design with Reactive Forms)</H1>
+<form [formGroup]="form">
+    <table>
+        <tr>
+            <td>
+                <label>User Name</label>
+            </td>
+            <td>
+                <input matInput placeholder="{{'Name'}}" formControlName="userName" required />
+                <div *ngIf="form.controls['userName'].touched && form.controls['userName'].errors && form.controls['userName'].errors.required">
+                    <div class="error">User name is required.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Password</label>
+            </td>
+            <td>
+                <input type="password" matInput placeholder="{{'Password'}}" formControlName="password" required />
+                <div *ngIf="form.controls['password'].touched && form.controls['password'].errors && form.controls['password'].errors.required">
+                    <div class="error">Password is required.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>User Type</label>
+            </td>
+            <td>
+                <reactive-usertype [userTypes] = "userTypes" [form] = "form" (userTypeChanged) = "displayValue($event)"></reactive-usertype>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit" [disabled]="!form.valid">Click</button>
+            </td>
+        </tr>
+    </table>
+</form>
